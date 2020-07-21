@@ -4,7 +4,7 @@ from django.db import models
 
 class BaseModel(models.Model):
     is_datele=models.BooleanField(default=False)
-    create_time=models.DateTimeField(auto_now_add=True)
+    create_time=models.DateTimeField('创建时间',auto_now_add=True)
     modify_time=models.DateTimeField(auto_now=True)
     class Meta:
         abstract=True
@@ -17,7 +17,11 @@ class Book(BaseModel):
 
 
 class Publish(BaseModel):
-    name=models.CharField(max_length=32)
+    name=models.CharField('名称',max_length=32)
+
+    class Meta:
+        verbose_name='出版社'
+        verbose_name_plural=verbose_name
 
 
 class Author(BaseModel):
